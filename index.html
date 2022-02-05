@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title> Temporizador Pomodoro </title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="preconect" href="https://fonts.google.com/icons?icon.query=menu" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rubik:ital,wght@0,300;0,500;1,500&display=swap" rel="stylesheet">
+      <link href="style/style.css" rel="stylesheet" type="text/css">
+   </head>
+   <body>
+      <content>
+      <header id="header" class="header">
+         <div class="div__titulo"><h1>Pomodoro</h1></div>
+            <nav class="nav">
+               <div class="nav__responsive">
+               <div class="div__menu-toggle">
+                   <input id="input" class="checkbox" type="checkbox"/>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+               <div class="div__responsive-content">
+                  <h5 class="h5__pomodoro__responsive">Agregar pomodoro</label></h5>
+                     <form id="formulario" class="formulario__responsive">
+                         <h7 class="h7__responsive">Nombre</h7>
+                         <input class="input__responsive" id="nombre" type="text">        
+                         <h7 class="h7__responsive">Cantidad de minutos</h7>
+                         <input class="input__responsive" id="min" type="number" min="0">    
+                         <input class="button__responsive" type="submit" id="btnppal"></button>  
+                     </form>
+               </div>
+               </div>
+            </nav>
+      </header>
+
+      <main>
+         <div class="div__tarjeta-principal">
+         <div class="div__estudio-pausa-descanso">
+         <button id="Estudio" class="div__button">Estudio</button>
+         <button id="Pausa" class="div__button">Descanso</button>
+         </div>
+
+            <div class="div__temporizador-reloj">
+            <h3>Temporizador digital</h3>
+            <h2>
+               <div id="displayReloj" class="div__reloj">
+                 00:00 
+               </div>
+            </h2>     
+               </div>
+            <div class="div__temporizador-controles">
+               <button id="strt">Comenzar</button>
+               <button id="stp">Pausar</button>
+               <button id="rst">Reiniciar</button>     
+            </div>
+      </div>
+      </main>
+      <div class="container__elegi">
+         <h2>Elegí tu pomodoro</h2>
+         <button id="delete">Borrar</button>
+      </div>
+      <div class="container">
+         <div class ="contenedor__pomodoro" id="contenedor-pomodoro">
+         </div>
+      </div>
+      <div class="div__que-es-pomodoro">
+         <h2>¿Qué es pomodoro?</h2>
+      </div>
+      <article class="content__pomodoro">
+         <div class="div__pomodoro-texto">
+      <h3 class="titulo">Técnica Pomodoro</h3>
+      <p>Es un método para mejorar la administración del tiempo dedicado a una actividad. Fue creado por Francesco Cirillo a fines de la década de 1980. Se basa en usar un temporizador para dividir el tiempo en intervalos fijos, llamados pomodoros, de 25 minutos de actividad, seguidos de 5 minutos de descanso, con pausas más largas cada cuatro pomodoros.</p>
+      <br>
+      <h3 class="titulo">Metodología</h3>
+      <p>Decidir la tarea o actividad a realizar.<br>
+      - Poner el temporizador.<br>
+      - Trabajar en la tarea de manera intensiva hasta que el temporizador suene.<br>
+      - Hacer una marca para anotar qué pomodoro se ha completado.<br>
+      - Tomar una pausa breve.<br>
+      - Cada cuatro pomodoros, tomar una pausa más larga.<br>
+      </p>
+         </div>     
+      </article>
+       <aside class="aside__pomodoro">
+          <img class="img_pomodoro" src="img/aside.png" alt="pomodoro study">
+       </aside>
+         <footer>
+            <a href="https://www.linkedin.com/in/raisa-erlich-36671041/" target="__blank">
+            <img href="https://www.linkedin.com/in/raisa-erlich-36671041/" class="logo-linkedin" src="img/logo-linkedin.png" alt="linkedin">
+            </a>
+            <div class="div__footer-datos">
+            <h6>Raisa Erlich</h6>
+            <h6>Proyecto final Javascript</h6>
+            <h6>para el curso de CoderHouse</h6>
+            </div>
+         </footer>
+      </content>
+  
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+      <script src="js/main.js"></script>
+   </body>
+
+</html>
