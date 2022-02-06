@@ -18,14 +18,33 @@ class CompletadoEstudio {
   }
 }
 
+//PRUEBA
+
+frasesAjax = [];
+
+function ajax() {
+  $(() => {
+    const datos = "../data/data.json";
+    $.getJSON(datos, function (respuesta, estado) {
+      if (estado === "success") {
+        alert("datos obtenidos");
+        respuesta.JSON.parse();
+        for (const frase of respuesta) {
+          console.log(frase.autor);
+        }
+      }
+    });
+  });
+}
+
+//FIN PRUEBA
+
 //Se crean dos arrays para contener a los objetos creados por los constructores
-
 listaPomodoroDefault = [];
-
 listaPomodoro = [];
-
 pomodorosCompletados = [];
 
+//Se crean dos pomodoros default que siempre apareceran como opción para el usuario
 let pomodoro1 = new PomodoroEstudio("Pomodoro promedio", 25, "2");
 pomodoro1.bio();
 console.log(pomodoro1);
@@ -38,7 +57,6 @@ listaPomodoroDefault.push(pomodoro2);
 
 //Se programan las funciones de cargar y guardar los pomodoros del local storage, esto sirve para que el usuario pueda luego seleccionar que
 //pomodoro quiere elegir del array de pomodoros.
-
 function guardarPomodoros() {
   localStorage.setItem("pomodoros", JSON.stringify(listaPomodoro));
 }
@@ -49,7 +67,7 @@ function cargarPomodoros() {
 
 cargarPomodoros();
 
-//Se programan las funciones de cargar y guardar los pomodoros completados del local storage, esto sirve para informar al usuario de su progreso
+//Se programan las funciones de cargar y guardar los pomodoros completados del local storage
 function cargarPomodorosCompletados() {
   pomodorosCompletados = JSON.parse(localStorage.getItem("completados")) || [];
 }
@@ -60,16 +78,17 @@ function guardarPomodorosCompletados() {
   localStorage.setItem("completados", JSON.stringify(pomodorosCompletados));
 }
 
-//Botón enviar. Envía la información que el usuario escribe en los form pero no acciona el temporizador.
-
-let miFormulario = document.getElementById("formulario");
-miFormulario.addEventListener("submit", validarFormulario);
-
+//Como el menú no es un botón sino un check de html, la siguiente funcion asegura que cuando el usuario envíe un nuevo pomodoro
+//el menú se cierra
 function cerrarMenu() {
   document.getElementById("input").checked = false;
 }
-//se valida el formulario y se muestra el tiempo indicado por el usuario
 
+//Botón enviar. Envía la información que el usuario escribe en los form pero no acciona el temporizador.
+let miFormulario = document.getElementById("formulario");
+miFormulario.addEventListener("submit", validarFormulario);
+
+//se valida el formulario y se muestra el tiempo indicado por el usuario
 function validarFormulario(e) {
   e.preventDefault();
   let formulario = e.target;
@@ -97,8 +116,6 @@ function validarFormulario(e) {
 
 //Mostrar por cada uno de los pomodoros de una tarjeta y un botón
 //Permitir cargar los pomodoros desde las tarjetas
-//JQUERY
-
 function tarjeta() {
   $("#contenedor-pomodoro").empty();
   for (const pomo of listaPomodoroDefault)
@@ -133,12 +150,17 @@ function tarjeta() {
     seg = seg < 10 ? "0" + seg : seg;
     min = min < 10 ? "0" + min : min;
     document.getElementById("displayReloj").textContent = `${min}:${seg}`;
-    $("#min").attr("value", tiempobot);
+    $("#min").val(tiempobot);
     //se reescribe el tiempo del input para que el cronometro todavia funcione
   });
 }
 
 tarjeta();
+
+//Se muestra con una animación de Jquery cuando el usuario ha completado un pomodoro
+$(".div__estudio-pausa-descanso").append(
+  '<h3 style="display: none; padding: 20px 0px; z-index:3; position:absolute; margin:auto; text-alignment:center; background-color: rgb(206, 255, 206); left: 0; right: 0; width: 40vw; height: fit-content ; font:arial; font-color: black;" class="popUp"> Ha completado un pomodoro </h3>'
+);
 
 function completadoPopUp() {
   $(".popUp").slideDown(1500, function () {
@@ -146,8 +168,7 @@ function completadoPopUp() {
   });
 }
 
-//Borrar Local Storage
-
+//Borrar Local Storage y tarjetas pomodoro
 let botonBorrar = document.getElementById("delete");
 
 botonBorrar.onclick = (e) => {
@@ -158,7 +179,6 @@ botonBorrar.onclick = (e) => {
 };
 
 //Botón descanso
-
 let descanso = document.getElementById("Pausa");
 descanso.onclick = () => {
   let pomodoroEstMin = 5;
@@ -172,7 +192,6 @@ descanso.onclick = () => {
 };
 
 // Función pausa
-
 let pausado = false;
 let pausa = document.getElementById("stp");
 pausa.onclick = (e) => {
@@ -182,7 +201,6 @@ pausa.onclick = (e) => {
 };
 
 // Función reinicio
-
 let reiniciar = false;
 let reinicio = document.getElementById("rst");
 reinicio.onclick = (e) => {
@@ -197,13 +215,14 @@ estudio.onclick = (e) => {
 };
 
 //Botón comenzar; ejecuta el temporizador
-
 let comenzar = document.getElementById("strt");
 comenzar.onclick = () => {
   let pomodoroEstMin = document.querySelector("#min").value;
   let tiempo = pomodoroEstMin * 60;
   let temporizador = setInterval(update, 1000);
   listaPomodoro.pop();
+  document.getElementById("strt").style.display = "none";
+  //el botón comenzar se deja de mostrar para evitar que el usuario pueda comenzar más de un temporizador por vez
 
   function update() {
     if (pausado) {
@@ -220,25 +239,13 @@ comenzar.onclick = () => {
       min == 0 && seg == 0 ? clearInterval(temporizador) : temporizador;
       if (min == 0 && seg == 0) {
         //creamos un nuevo pomodoro completado y lo guardamos en el array
+        document.getElementById("strt").style.display = "block";
+        //volvemos a mostrar el botón de comenzar
         let pom1 = new CompletadoEstudio(1);
         pomodorosCompletados.push(pom1);
-
-        $(".div__estudio-pausa-descanso").append(
-          '<h3 style="display: none; padding: 20px 0px; z-index:3; position:absolute; margin:auto; text-alignment:center; background-color: #ffb7d0; left: 0; right: 0; width: 40vw; height: fit-content ; font:arial; font-color: black;" class="popUp"> Ha completado un pomodoro </h3>'
-        );
         guardarPomodorosCompletados();
-        //mostramos al usuario la cantidad de pomodoros completados
-        /*let parrafo2 = document.createElement("p");
-        parrafo2.innerHTML = `<h3>Ha completado un total de ${pomodorosCompletados.length} pomodoro/s</h3>`;
-        document.body.appendChild(parrafo2);*/
         completadoPopUp();
-        //si es el primer pomodoro que se completa, el usuario recibe una felicitacion
-        if (pomodorosCompletados.length == 1) {
-          let parrafo = document.createElement("p");
-          parrafo.innerHTML =
-            "<h3>¡Felicidades, ha terminado su primer pomodoro!</h3>";
-          document.body.appendChild(parrafo);
-        }
+        //El usuario recibe una felicitación cuando se completa el pomodoro
       }
     }
   }

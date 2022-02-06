@@ -1,0 +1,74 @@
+{
+  "Frases": [
+    {
+      "id": 0,
+      "frase": "Siempre parece imposible hasta que se hace",
+      "autor": "Nelson Mandela"
+    },
+    {
+      "id": 1,
+      "frase": "La motivación es lo que te pone en marcha, el hábito es lo que hace que sigas",
+      "autor": "Jim Ryun"
+    },
+    {
+      "id": 2,
+      "frase": "El hombre que es un maestro de la paciencia es un maestro de todo lo demás",
+      "autor": "George Saville"
+    },
+    {
+      "id": 3,
+      "frase": "Si hiciésemos todas las cosas de las que somos capaces, nos asombraríamos",
+      "autor": "Thomas Edison"
+    },
+    {
+      "id": 4,
+      "frase": "Tus talentos y habilidades irán mejorando con el tiempo, pero para eso has de empezar",
+      "autor": "Martin Luther King"
+    },
+    {
+      "id": 5,
+      "frase": "La verdadera educación consiste en obtener lo mejor de uno mismo",
+      "autor": "Mahatma Gandhi"
+    },
+    {
+      "id": 6,
+      "frase": "Nuestra paciencia conseguirá más cosas que nuestra fuerza",
+      "autor": "Edmund Burke"
+    },
+    {
+      "id": 7,
+      "frase": "Aprender sin pensar es inútil. Pensar sin aprender, peligroso",
+      "autor": "Confusio"
+    },
+    {
+      "id": 8,
+      "frase": "Los campeones siguen jugando hasta que lo hacen bien",
+      "autor": "Billie Jean King"
+    },
+    {
+      "id": 9,
+      "frase": "Emplea todos tus esfuerzos, incluso cuando las posibilidades jueguen en tu contra",
+      "autor": "Arnold Palmer"
+    },
+    {
+      "id": 10,
+      "frase": "Lo maravilloso de aprender algo es que nadie puede arrebatárnoslo",
+      "autor": "B. B. King"
+    },
+    {
+      "id": 11,
+      "frase": "El hombre bien preparado para la lucha ha conseguido medio triunfo",
+      "autor": "Miguel de Cervantes"
+    },
+    {
+      "id": 12,
+      "frase": "La manera más efectiva de hacer algo es hacerlo",
+      "autor": "Amelia Earhat"
+    },
+    {
+      "id": 13,
+      "frase": "La perseverancia puede transformar el fracaso en un logro extraordinario",
+      "autor": "Matt Biondi"
+    }
+  ]
+}
