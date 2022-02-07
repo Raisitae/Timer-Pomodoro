@@ -49,7 +49,6 @@ function borrarFrase() {
 
 //Al activar el botón se ejecuta la función fraseRandom
 botonMotivar.onclick = () => {
-  alert("prueba");
   demorar();
   fraseRandom();
   borrarFrase();
