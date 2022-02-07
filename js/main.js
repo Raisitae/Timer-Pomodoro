@@ -18,28 +18,7 @@ class CompletadoEstudio {
   }
 }
 
-//PRUEBA
-
-frasesAjax = [];
-
-function ajax() {
-  $(() => {
-    const datos = "../data/data.json";
-    $.getJSON(datos, function (respuesta, estado) {
-      if (estado === "success") {
-        alert("datos obtenidos");
-        respuesta.JSON.parse();
-        for (const frase of respuesta) {
-          console.log(frase.autor);
-        }
-      }
-    });
-  });
-}
-
-//FIN PRUEBA
-
-//Se crean dos arrays para contener a los objetos creados por los constructores
+//Se crean dos arrays para contener a los objetos creados por los constructores y un tercero para guardar la informacion de los pomodoros completados
 listaPomodoroDefault = [];
 listaPomodoro = [];
 pomodorosCompletados = [];
@@ -114,8 +93,8 @@ function validarFormulario(e) {
   cerrarMenu();
 }
 
-//Mostrar por cada uno de los pomodoros de una tarjeta y un botón
-//Permitir cargar los pomodoros desde las tarjetas
+//Mostrar por cada uno de los pomodoros del array default y los ingresados por el usuario una tarjeta y un botón
+//Permite cargar los pomodoros desde las tarjetas
 function tarjeta() {
   $("#contenedor-pomodoro").empty();
   for (const pomo of listaPomodoroDefault)
@@ -159,16 +138,14 @@ tarjeta();
 
 //Se muestra con una animación de Jquery cuando el usuario ha completado un pomodoro
 $(".div__estudio-pausa-descanso").append(
-  '<h3 style="display: none; padding: 20px 0px; z-index:3; position:absolute; margin:auto; text-alignment:center; background-color: rgb(206, 255, 206); left: 0; right: 0; width: 40vw; height: fit-content ; font:arial; font-color: black;" class="popUp"> Ha completado un pomodoro </h3>'
+  '<h3 style="display: none; padding: 20px 0px; z-index:3; position:absolute; margin:auto; text-align:center; background-color: rgb(206, 255, 206); left: 0; right: 0; width: 40vw; height: fit-content ; font:arial; font-color: black;" class="popUp"> Ha completado un pomodoro </h3>'
 );
 
 function completadoPopUp() {
-  $(".popUp").slideDown(1500, function () {
-    $(".popUp").slideUp(1000);
-  });
+  $(".popUp").fadeIn(1000).delay(1000).fadeOut(1000);
 }
 
-//Borrar Local Storage y tarjetas pomodoro
+//Borrar Local Storage y tarjetas pomodoro del html
 let botonBorrar = document.getElementById("delete");
 
 botonBorrar.onclick = (e) => {
@@ -191,6 +168,12 @@ descanso.onclick = () => {
   $("#min").attr("value", 5);
 };
 
+//Botón estudio (recarga la página)
+let estudio = document.getElementById("Estudio");
+estudio.onclick = (e) => {
+  location.reload();
+};
+
 // Función pausa
 let pausado = false;
 let pausa = document.getElementById("stp");
@@ -208,12 +191,6 @@ reinicio.onclick = (e) => {
   location.reload();
 };
 
-//Botón estudio -> también reinicia
-let estudio = document.getElementById("Estudio");
-estudio.onclick = (e) => {
-  location.reload();
-};
-
 //Botón comenzar; ejecuta el temporizador
 let comenzar = document.getElementById("strt");
 comenzar.onclick = () => {
@@ -224,6 +201,7 @@ comenzar.onclick = () => {
   document.getElementById("strt").style.display = "none";
   //el botón comenzar se deja de mostrar para evitar que el usuario pueda comenzar más de un temporizador por vez
 
+  //Temporizador:
   function update() {
     if (pausado) {
       temporizador = tiempoactual;

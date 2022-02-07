@@ -41,11 +41,6 @@ h1 {
   font-size: 4vh;
 }
 
-/* responsive nav mobile*/
-.nav__desktop {
-  display: none;
-}
-
 .div__menu-toggle {
   display: flex;
   flex-direction: column;
@@ -53,7 +48,7 @@ h1 {
   position: absolute;
   width: 100%;
   top: 10px;
-  z-index: 1;
+  z-index: 100;
   -webkit-user-select: none;
   user-select: none;
 }
@@ -84,7 +79,7 @@ h1 {
   border-radius: 3px;
   right: 10px;
 
-  z-index: 1;
+  z-index: 100;
 
   transform-origin: 4px 0px;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
@@ -264,11 +259,13 @@ button {
 
 .container__elegi {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
-  justify-content: center;
   align-items: center;
   background: rgba(0, 176, 0);
   font-size: 80%;
+  padding: 0px;
 }
 
 #tarjeta-pomodoro > p,
@@ -294,11 +291,6 @@ button {
   align-items: center;
   background: rgba(0, 176, 0);
   font-size: 130%;
-}
-
-#delete {
-  position: absolute;
-  margin-left: 80%;
 }
 
 .container > .contenedor__pomodoro {
@@ -577,17 +569,15 @@ footer {
 
   .container__elegi {
     display: flex;
+    flex-direction: row;
     position: relative;
     grid-area: div-elegi;
-    justify-content: center;
+    justify-content: space-between;
     background: rgba(0, 176, 0);
     font-size: 80%;
+    padding: 0px 10px;
   }
 
-  #delete {
-    position: absolute;
-    margin-left: 95%;
-  }
   .container {
     grid-area: container;
   }
