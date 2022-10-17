@@ -1,5 +1,5 @@
 # Timer-Pomodoro
-Pomodoro timer for 
+Pomodoro timer  
 
 # Features
 - Save and load custom pomodoro's from localstorage.
