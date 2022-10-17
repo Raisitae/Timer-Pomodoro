@@ -1,2 +1,7 @@
 # Timer-Pomodoro
-Temporizador pomodoro. Proyecto final curso Javascript/Coderhouse.
+Pomodoro timer
+
+# Features
+- Save and load custom pomodoro's from localstorage.
+- Begin, pause, resume and restart the timer.
+- Jquery animation
